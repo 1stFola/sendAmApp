@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserServiceImplTest {
+//    private UserServiceImpl userService;
     private UserService userService;
 
     @BeforeEach
@@ -40,7 +41,7 @@ class UserServiceImplTest {
     @Test
     public void duplicateEmail_throwExceptionTest() {
         RegisterUserRequest newForm = createRegisterForm();
-        RegisterUserResponse service = userService.register(newForm);
+//        RegisterUserResponse service = userService.register(newForm);
 
         userService.register(newForm);
         assertThrows(SendAmAppException.class, () -> userService.register(newForm));

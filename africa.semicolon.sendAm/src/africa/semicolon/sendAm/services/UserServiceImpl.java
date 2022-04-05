@@ -9,24 +9,24 @@ import africa.semicolon.sendAm.dtos.responses.RegisterUserResponse;
 import africa.semicolon.sendAm.exceptions.RegisterFailureException;
 import africa.semicolon.sendAm.exceptions.UserNotFoundException;
 
-import java.util.Locale;
 
 public class UserServiceImpl implements UserService{
     private UserRepository userRepository = new UserRepositoryImpl();
     @Override
     public RegisterUserResponse register(RegisterUserRequest requestForm) {
-        requestForm.setEmailAddress(requestForm.getEmailAddress().toLowerCase());
+             requestForm.setEmailAddress(requestForm.getEmailAddress().toLowerCase());
         if(emailExist(requestForm.getEmailAddress()))throw new RegisterFailureException("Duplicate email error");
-        String fullName = requestForm.getFirstName()+" "+requestForm.getLastName();
-        String email = requestForm.getEmailAddress();
+             String fullName = requestForm.getFirstName()+" "+requestForm.getLastName();
+             String email = requestForm.getEmailAddress();
         User owner = new User(fullName,email);
         owner.setEmail(requestForm.getEmailAddress());
         owner.setAddress(requestForm.getAddress());
         owner.setFullName(requestForm.getFirstName()+" "+requestForm.getLastName());
         owner.setPhoneNumber(requestForm.getPhoneNumber());
 
-        User savedUser = userRepository.create(owner);
+        User savedUser = userRepository.create(owner); // this delivers the created user (owner) into the Repository
         RegisterUserResponse response = new RegisterUserResponse();
+
         response.setEmail(savedUser.getEmail());
         response.setFullName(savedUser.getFullName());
         return response;
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public FindUserResponse findUserByEmail(String email) {
-        email = email.toLowerCase();
+            email = email.toLowerCase();
         User user = userRepository.findByEmail(email);
         // create Response
         if (user == null) throw new UserNotFoundException(email + " " + "Not found");

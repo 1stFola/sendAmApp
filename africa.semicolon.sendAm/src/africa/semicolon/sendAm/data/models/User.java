@@ -23,6 +23,7 @@ public class User {
 
     public String getEmail() {
         return email;
+
     }
 
     public void setEmail(String email) {
@@ -52,4 +53,7 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+
+
 }

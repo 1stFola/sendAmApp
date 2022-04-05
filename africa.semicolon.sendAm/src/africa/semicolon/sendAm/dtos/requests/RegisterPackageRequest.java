@@ -40,4 +40,5 @@ public class RegisterPackageRequest {
     public List<Status> getStatusList() {
         return statusList;
     }
+
 }

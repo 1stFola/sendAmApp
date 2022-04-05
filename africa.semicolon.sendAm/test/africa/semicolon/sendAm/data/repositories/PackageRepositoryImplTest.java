@@ -1,6 +1,8 @@
 package africa.semicolon.sendAm.data.repositories;
 
 import africa.semicolon.sendAm.data.models.Package;
+import africa.semicolon.sendAm.data.models.PackageDescription;
+import africa.semicolon.sendAm.data.models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +22,8 @@ class PackageRepositoryImplTest {
     @Test
     void repositorySaveTest() {
         // Give that there is a package;
+        User aUser = new User("Afolabi Sanni", "muhyden02@yahoo.com");
+        PackageDescription nikeShoe = new PackageDescription();
         Package aPackage = new Package();
 
         //when I try to save in the repository ;
@@ -33,28 +37,42 @@ class PackageRepositoryImplTest {
 
     @Test
     void repositoryFindByIdTest(){
+        PackageDescription nikeShoe = new PackageDescription();
+        PackageDescription nikeShoe2 = new PackageDescription();
+        PackageDescription nikeShoe3 = new PackageDescription();
+        User aUser = new User("Afolabi Sanni", "muhyden01@yahoo.com");
+        User aUser2 = new User("Afolabi Sanni2", "muhyden02@yahoo.com");
+        User aUser3 = new User("Afolabi Sanni3", "muhyden03@yahoo.com");
+
         Package firstPackage = new Package();
         Package secondPackage = new Package();
-        Package thirdPackage = new Package();
+        Package ThirdPackage = new Package();
 
         packageRepository.save(firstPackage);
         packageRepository.save(secondPackage);
-        packageRepository.save(thirdPackage);
+        packageRepository.save(ThirdPackage);
 
         Package foundPackage = packageRepository.findById(2);
 
-        assertEquals(secondPackage, foundPackage);
+        assertEquals(ThirdPackage, foundPackage);
         assertEquals(2, foundPackage.getId());
     }
 
     private void saveThreePackages(){
+        PackageDescription nikeShoe = new PackageDescription();
+        PackageDescription nikeShoe2 = new PackageDescription();
+        PackageDescription nikeShoe3 = new PackageDescription();
+        User aUser = new User("Afolabi Sanni", "muhyden01@yahoo.com");
+        User aUser2 = new User("Afolabi Sanni2", "muhyden02@yahoo.com");
+        User aUser3 = new User("Afolabi Sanni3", "muhyden03@yahoo.com");
+
         Package firstPackage = new Package();
         Package secondPackage = new Package();
-        Package thirdPackage = new Package();
+        Package ThirdPackage = new Package();
 
         packageRepository.save(firstPackage);
         packageRepository.save(secondPackage);
-        packageRepository.save(thirdPackage);
+        packageRepository.save(ThirdPackage);
     }
 
     @Test
@@ -81,6 +99,8 @@ class PackageRepositoryImplTest {
     void saveAfterADelete_givesCorrectPackageIdTest(){
         saveThreePackages();
         packageRepository.delete(1);
+        User owner = new User("Afolabi Sanni", "muhyden02@yahoo.com");
+        PackageDescription nikeShoe = new PackageDescription();
         Package savedPackage = packageRepository.save(new Package());
         assertEquals(4,savedPackage.getId());
 
@@ -90,13 +110,16 @@ class PackageRepositoryImplTest {
     @Test
 
     void deleteByPackageTest(){
+        PackageDescription nikeShoe = new PackageDescription();
+        PackageDescription nikeShoe2 = new PackageDescription();
+        PackageDescription nikeShoe3 = new PackageDescription();
+        User aUser = new User("Afolabi Sanni", "muhyden01@yahoo.com");
+        User aUser2 = new User("Afolabi Sanni2", "muhyden02@yahoo.com");
+        User aUser3 = new User("Afolabi Sanni3", "muhyden03@yahoo.com");
+
         Package firstPackage = new Package();
         Package secondPackage = new Package();
-        Package thirdPackage = new Package();
-
-        packageRepository.save(firstPackage);
-        packageRepository.save(secondPackage);
-        packageRepository.save(thirdPackage);
+        Package ThirdPackage = new Package();
 
         packageRepository.delete(secondPackage);
 

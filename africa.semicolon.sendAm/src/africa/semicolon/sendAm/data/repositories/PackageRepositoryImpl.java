@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackageRepositoryImpl implements PackageRepository{
+
     private List<Package> database = new ArrayList<>();
     private  int id = 0;
-    private int my;
 
     @Override
     public Package save(Package aPackage) {

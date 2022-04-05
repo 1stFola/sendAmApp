@@ -9,9 +9,9 @@ public interface UserService {
 
     RegisterUserResponse register(RegisterUserRequest requestForm);
 
-    UserRepository getRepository();
-
     FindUserResponse findUserByEmail(String email);
+
+    UserRepository getRepository();
 }
 
 

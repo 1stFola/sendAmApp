@@ -10,6 +10,5 @@ public interface PackageRepository {
     void delete(Package aPackage);
     void delete(int id);
     List<Package> findAll();
-
     int count();
 }

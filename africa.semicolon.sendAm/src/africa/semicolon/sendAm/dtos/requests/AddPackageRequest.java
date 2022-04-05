@@ -1,10 +1,9 @@
-package africa.semicolon.sendAm.data.models;
+package africa.semicolon.sendAm.dtos.requests;
 
-public class PackageDescription {
+public class AddPackageRequest {
+
     private String name;
     private double weightInGrammes;
-
-
 
     public String getName() {
         return name;
@@ -21,4 +20,5 @@ public class PackageDescription {
     public void setWeightInGrammes(double weightInGrammes) {
         this.weightInGrammes = weightInGrammes;
     }
+
 }

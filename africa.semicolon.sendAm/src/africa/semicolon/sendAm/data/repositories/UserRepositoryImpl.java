@@ -7,6 +7,8 @@ import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
     private List<User> database = new ArrayList<>();
+
+
     @Override
     public User create(User owner) {
         database.add(owner);
@@ -16,7 +18,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findByEmail(String email) {
         for (User user: database){
-            if(user.getEmail() .equals(email))
+            if(user.getEmail().equals(email))
                 return user;
         }
         return null;
@@ -42,5 +44,6 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public int count() {
         return database.size();
+
     }
 }
